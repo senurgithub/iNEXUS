@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Cookie Policy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reusing the same animations and styles from the previous design */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.6); }
+        }
+        
+        @keyframes neonGlow {
+            0%, 100% { text-shadow: 0 0 5px #00fffc, 0 0 10px #00fffc, 0 0 15px #00fffc; }
+            50% { text-shadow: 0 0 10px #00fffc, 0 0 20px #00fffc, 0 0 30px #00fffc; }
+        }
+        
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100vh; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+        }
+        
+        /* Animation classes */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        .neon-glow {
+            animation: neonGlow 2s ease-in-out infinite;
+        }
+        
+        .rotate-animation {
+            animation: rotate 20s linear infinite;
+        }
+        
+        .flicker-animation {
+            animation: flicker 10s linear infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        /* Custom styles */
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                rgba(0, 20, 20, 0.3) 50%, 
+                transparent 100%);
+            pointer-events: none;
+            z-index: -1;
+            animation: scanline 8s linear infinite;
+        }
+        
+        .cyber-border {
+            position: relative;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .cyber-border::before, .cyber-border::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00fffc;
+            pointer-events: none;
+        }
+        
+        .cyber-border::before {
+            top: -2px;
+            left: -2px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .cyber-border::after {
+            bottom: -2px;
+            right: -2px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        .cyber-card {
+            background: rgba(10, 10, 20, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+        
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        
+        .cyber-card:hover::before {
+            left: 100%;
+        }
+        
+        .cyber-button {
+            background: linear-gradient(45deg, #003333, #006666);
+            border: 1px solid #00fffc;
+            color: #00fffc;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-button:hover {
+            background: linear-gradient(45deg, #006666, #009999);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            color: white;
+        }
+        
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 255, 255, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+        
+        .neon-text {
+            color: #00fffc;
+            text-shadow: 0 0 5px #00fffc;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#00fffc, #009999);
+            border-radius: 4px;
+        }
+        
+        /* Particle effects */
+        .particle {
+            position: absolute;
+            background: rgba(0, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        /* Cyberpunk terminal effect */
+        .terminal {
+            background-color: rgba(0, 20, 20, 0.7);
+            border: 1px solid #00fffc;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+        
+        .terminal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to right, #003333, #006666);
+            border-bottom: 1px solid #00fffc;
+        }
+        
+        .terminal-header {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            color: #00fffc;
+            font-weight: bold;
+        }
+        
+        .terminal-controls {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+        }
+        
+        .terminal-control {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+        
+        .terminal-content {
+            padding: 40px 20px 20px;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .command-line {
+            color: #00fffc;
+        }
+        
+        .command-line::before {
+            content: '> ';
+        }
+        
+        .command-output {
+            color: #00ff99;
+            margin-top: 10px;
+        }
+        
+        .blinking-cursor {
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Cookies page specific styles */
+        .cookies-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .cookies-section {
+            margin-bottom: 50px;
+        }
+        
+        .cookies-section h2 {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .cookies-section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 80%;
+            background: #00fffc;
+            box-shadow: 0 0 10px #00fffc;
+        }
+        
+        .cookies-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .cookies-section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .cookies-section li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .cookies-section li::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            color: #00fffc;
+            font-size: 10px;
+            top: 5px;
+        }
+        
+        .last-updated {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Cookie types styling */
+        .cookie-type {
+            margin-bottom: 30px;
+        }
+        
+        .cookie-type-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .cookie-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Cookie consent banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 20, 30, 0.95);
+            border-top: 1px solid #00fffc;
+            padding: 20px;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-out;
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        
+        .cookie-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .cookie-banner-text {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .cookie-banner-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        /* Cookie table */
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .cookie-table th {
+            background: rgba(0, 50, 50, 0.5);
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #00fffc;
+        }
+        
+        .cookie-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .cookie-table tr:hover {
+            background: rgba(0, 50, 50, 0.2);
+        }
+        
+        /* Toggle switch */
+        .cookie-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .cookie-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .cookie-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #333;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .cookie-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .cookie-slider {
+            background-color: #00fffc;
+        }
+        
+        input:checked + .cookie-slider:before {
+            transform: translateX(26px);
+        }
+        
+        /* Legal clause styling */
+        .legal-clause {
+            background: rgba(0, 50, 50, 0.3);
+            padding: 15px;
+            border-left: 3px solid #00fffc;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+        
+        /* Warning box */
+        .warning-box {
+            background: rgba(255, 100, 0, 0.15);
+            border-left: 4px solid #ff6400;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: '⚠️';
+            position: absolute;
+            left: -30px;
+            top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body class="font-mono">
+    <!-- Floating particles -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating decorative elements -->
+    <div class="fixed top-1/4 left-1/4 w-32 h-32 rounded-full bg-cyan-500 bg-opacity-10 blur-3xl -z-10"></div>
+    <div class="fixed bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-teal-500 bg-opacity-10 blur-3xl -z-10"></div>
+    <div class="fixed top-1/2 right-1/2 w-24 h-24 rounded-full bg-emerald-500 bg-opacity-10 blur-3xl -z-10"></div>
+    
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-black bg-opacity-80 backdrop-blur-md border-b border-cyan-500 border-opacity-30">
+        <div class="max-w-7xl mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-600 to-emerald-600 flex items-center justify-center pulse-glow">
+                        <i class="fas fa-brain text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold neon-text flicker-animation">NEXUS</span>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-10">
+                    <a href="#" class="text-gray-300 hover:text-cyan-400 transition hover:neon-glow">SYSTEMS</a>
+                    <a href="#" class="text-gray-300 hover:text-cyan-400 transition hover:neon-glow">NETWORK</a>
+                    <a href="#" class="text-gray-300 hover:text-cyan-400 transition hover:neon-glow">DATA</a>
+                    <a href="#" class="text-gray-300 hover:text-cyan-400 transition hover:neon-glow">SECURITY</a>
+                    <a href="#" class="text-gray-300 hover:text-cyan-400 transition hover:neon-glow">ACCESS</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="px-5 py-2 rounded-lg text-gray-300 hover:text-cyan-400 transition hover:neon-glow">
+                        LOGIN
+                    </a>
+                    <a href="signup.html" class="px-5 py-2 cyber-button pulse-glow">
+                        CONNECT
+                    </a>
+                    <button class="lg:hidden text-gray-300 hover:text-cyan-400">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Cookies Policy Section -->
+    <section class="py-20">
+        <div class="cookies-container mx-auto px-6">
+            <div class="cyber-card rounded-xl p-10 fade-in">
+                <div class="flex items-center justify-between mb-12">
+                    <h1 class="text-4xl font-bold neon-text">COOKIE POLICY v3.1.4</h1>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-green-500 pulse-glow"></div>
+                        <span class="text-sm text-green-400">ACTIVE</span>
+                    </div>
+                </div>
+                
+                <div class="terminal mb-10">
+                    <div class="terminal-header">NEXUS DATA TERMINAL</div>
+                    <div class="terminal-controls">
+                        <div class="terminal-control bg-red-500"></div>
+                        <div class="terminal-control bg-yellow-500"></div>
+                        <div class="terminal-control bg-green-500"></div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="command-line">data --cookies --status</div>
+                        <div class="command-output">
+                            <div>> COOKIE STATUS: <span class="text-green-400">ACTIVE</span></div>
+                            <div>> TRACKING: <span class="text-green-400">OPT-IN</span></div>
+                            <div>> COMPLIANCE: <span class="text-green-400">100%</span></div>
+                        </div>
+                        <div class="command-line mt-4 blinking-cursor">_</div>
+                    </div>
+                </div>
+                
+                <div class="warning-box fade-in">
+                    <h3 class="text-xl font-bold mb-2 text-orange-400">DATA NOTICE</h3>
+                    <p>This website uses neural tracking cookies and similar technologies to enhance your cybernetic experience. By continuing to browse, you consent to our use of cookies in accordance with this policy.</p>
+                </div>
+                
+                <div class="cookies-section fade-in delay-1">
+                    <h2 class="text-2xl font-bold mb-6 neon-text">1. WHAT ARE COOKIES?</h2>
+                    <p>In the Nexus network, cookies are small data packets implanted in your neural interface or device that allow us to recognize your cybernetic signature and remember your preferences.</p>
+                    
+                    <div class="legal-clause mt-6">
+                        <h3 class="font-bold mb-2">1.1 Cookie Functions</h3>
+                        <p>Our cookies perform several essential functions:</p>
+                        <ul class="mt-2">
+                            <li>Authentication: Verify your neural identity</li>
+                            <li>Security: Protect against cyber intrusions</li>
+                            <li>Preferences: Remember your interface settings</li>
+                            <li>Analytics: Help improve our cybernetic services</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cookies-section fade-in delay-2">
+                    <h2 class="text-2xl font-bold mb-6 neon-text">2. TYPES OF COOKIES WE USE</h2>
+                    <p>Nexus employs various cookie technologies to optimize your cybernetic experience:</p>
+                    
+                    <div class="cookie-type">
+                        <div class="cookie-type-header">
+                            <div class="cookie-icon bg-purple-600">
+                                <i class="fas fa-shield-alt text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-purple-400">ESSENTIAL COOKIES</h3>
+                        </div>
+                        <p>These critical cookies enable core functionality like security, network management, and accessibility. They cannot be disabled via our interface.</p>
+                        <div class="legal-clause mt-4">
+                            <p><strong>Examples:</strong> Neural authentication tokens, session identifiers, security validation cookies</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cookie-type">
+                        <div class="cookie-type-header">
+                            <div class="cookie-icon bg-cyan-600">
+                                <i class="fas fa-cog text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-cyan-400">PREFERENCE COOKIES</h3>
+                        </div>
+                        <p>These remember your cybernetic interface choices and customization settings to enhance your experience.</p>
+                        <div class="legal-clause mt-4">
+                            <p><strong>Examples:</strong> Language preferences, display settings, neural interface configurations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cookie-type">
+                        <div class="cookie-type-header">
+                            <div class="cookie-icon bg-blue-600">
+                                <i class="fas fa-chart-line text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-blue-400">ANALYTICS COOKIES</h3>
+                        </div>
+                        <p>We use these to understand how users interact with our cybernetic systems and improve performance.</p>
+                        <div class="legal-clause mt-4">
+                            <p><strong>Examples:</strong> Neural pathway tracking, interface interaction metrics, system performance data</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cookie-type">
+                        <div class="cookie-type-header">
+                            <div class="cookie-icon bg-yellow-600">
+                                <i class="fas fa-adjust text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-yellow-400">ADVERTISING COOKIES</h3>
+                        </div>
+                        <p>These optional cookies deliver targeted cybernetic enhancement offers based on your neural activity patterns.</p>
+                        <div class="legal-clause mt-4">
+                            <p><strong>Examples:</strong> Neural interest profiling, enhancement recommendation systems, partner network tracking</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cookies-section fade-in delay-3">
+                    <h2 class="text-2xl font-bold mb-6 neon-text">3. COOKIE DURATION</h2>
+                    <p>Cookies in the Nexus network have varying lifespans based on their function:</p>
+                    
+                    <table class="cookie-table">
+                        <thead>
+                            <tr>
+                                <th>Cookie Type</th>
+                                <th>Duration</th>
+                                <th>Persistent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Session Cookies</td>
+                                <td>Active neural connection</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>Authentication</td>
+                                <td>30 cyber-days</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Preferences</td>
+                                <td>90 cyber-days</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Analytics</td>
+                                <td>1 cyber-year</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Advertising</td>
+                                <td>180 cyber-days</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="legal-clause mt-6">
+                        <h3 class="font-bold mb-2">3.1 Cookie Expiration</h3>
+                        <p>Persistent cookies automatically expire after their set duration unless you refresh them through continued interaction with our cybernetic systems.</p>
+                    </div>
+                </div>
+                
+                <div class="cookies-section fade-in delay-4">
+                    <h2 class="text-2xl font-bold mb-6 neon-text">4. MANAGING COOKIES</h2>
+                    <p>You have control over most cookie technologies through your neural interface settings:</p>
+                    
+                    <div class="legal-clause mt-6">
+                        <h3 class="font-bold mb-2">4.1 Browser Controls</h3>
+                        <p>Most cybernetic browsers allow you to:</p>
+                        <ul>
+                            <li>View stored cookies and neural data</li>
+                            <li>Block cookies from specific domains</li>
+                            <li>Delete existing cookies</li>
+                        </ul>
+                        <p class="mt-2">Note that disabling essential cookies may impair Nexus system functionality.</p>
+                    </div>
+                    
+                    <div class="legal-clause mt-6">
+                        <h3 class="font-bold mb-2">4.2 Nexus Cookie Console</h3>
+                        <p>Our neural interface provides granular cookie management:</p>
+                        <div class="mt-4">
+                            <div class="flex items-center justify-between py-2 border-b border-gray-700">
+                                <span>Essential Cookies</span>
+                                <span class="text-green-400">Always Active</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2 border-b border-gray-700">
+                                <span>Preference Cookies</span>
+                                <label class="cookie-toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="cookie-slider"></span>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between py-2 border-b border-gray-700">
+                                <span>Analytics Cookies</span>
+                                <label class="cookie-toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="cookie-slider"></span>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <span>Advertising Cookies</span>
+                                <label class="cookie-toggle">
+                                    <input type="checkbox">
+                                    <span class="cookie-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cookies-section fade-in">
+                    <h2 class="text-2xl font-bold mb-6 neon-text">5. THIRD-PARTY COOKIES</h2>
+                    <p>Some Nexus cybernetic enhancements integrate with trusted partner networks that may set their own cookies.</p>
+                    
+                    <div class="legal-clause mt-6">
+                        <h3 class="font-bold mb-2">5.1 Partner Networks</h3>
+                        <p>We work with these certified cybernetic partners:</p>
+                        <ul>
+                            <li>NeuralLink Analytics</li>
+                            <li>CyberDyne Security</li>
+                            <li>OmniCorp Enhancements</li>
+                            <li>SynthMind AI</li>
+                        </ul>
+                        <p class="mt-2">Each partner maintains their own cookie policies which we recommend reviewing.</p>
+                    </div>
+                </div>
+                
+                <div class="cookies-section fade-in">
+                    <h2 class="text-2xl font-bold mb-6 neon-text">6. DATA PROTECTION</h2>
+                    <p>Nexus employs advanced cybernetic security measures to protect cookie data:</p>
+                    
+                    <div class="legal-clause mt-6">
+                        <h3 class="font-bold mb-2">6.1 Security Protocols</h3>
+                        <ul>
+                            <li>Quantum encryption for all neural data</li>
+                            <li>Regular cyber-security audits</li>
+                            <li>Strict access controls</li>
+                            <li>Automatic data purging protocols</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-clause mt-6">
+                        <h3 class="font-bold mb-2">6.2 Data Rights</h3>
+                        <p>Under the Global Cybernetic Accord, you have the right to:</p>
+                        <ul>
+                            <li>Access your neural data profile</li>
+                            <li>Request correction of inaccurate data</li>
+                            <li>Request deletion of non-essential data</li>
+                            <li>Restrict or object to processing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cookies-section fade-in">
+                    <h2 class="text-2xl font-bold mb-6 neon-text">7. POLICY UPDATES</h2>
+                    <p>We may update this Cookie Policy as cybernetic technologies evolve.</p>
+                    
+                    <div class="legal-clause mt-6">
+                        <h3 class="font-bold mb-2">7.1 Notification</h3>
+                        <p>Significant changes will be announced through your neural interface with at least 30 cyber-days notice before implementation.</p>
+                    </div>
+                </div>
+                
+                <div class="cookies-section fade-in">
+                    <h2 class="text-2xl font-bold mb-6 neon-text">8. CONTACT</h2>
+                    <p>For questions about our Cookie Policy, contact our Data Protection Neural Network:</p>
+                    <ul>
+                        <li><strong>Neural Link:</strong> data@nexus.cyber</li>
+                        <li><strong>Quantum Mail:</strong> Nexus Cybernetics, Data Sector, Quantum Server Cluster 7</li>
+                        <li><strong>Direct Interface:</strong> Initiate secure connection through your neural implant</li>
+                    </ul>
+                </div>
+                
+                <div class="last-updated fade-in">
+                    <p>COOKIE POLICY LAST UPDATED: <span class="text-cyan-400">2077.07.15</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                <h3 class="text-lg font-bold mb-2 text-cyan-400">NEXUS COOKIE CONSENT</h3>
+                <p class="text-sm">We use neural tracking cookies to optimize your cybernetic experience. By continuing to browse, you consent to our use of essential and preference cookies. You can manage your preferences at any time through your neural interface settings.</p>
+            </div>
+            <div class="cookie-banner-actions">
+                <button class="px-4 py-2 bg-gray-800 rounded-lg text-gray-300 hover:text-cyan-400 transition" id="cookieSettings">
+                    <i class="fas fa-cog mr-2"></i>SETTINGS
+                </button>
+                <button class="px-4 py-2 cyber-button pulse-glow" id="cookieAccept">
+                    ACCEPT ALL
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-80 pt-20 pb-12 border-t border-cyan-500 border-opacity-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-5 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-600 to-emerald-600 flex items-center justify-center">
+                            <i class="fas fa-brain text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold neon-text">NEXUS</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Redefining human potential through cybernetic enhancement.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-cyan-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-cyan-400">SYSTEMS</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">Neural Interfaces</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">Cyberlimbs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">Sensory Upgrades</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">Implants</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-emerald-400">SERVICES</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition">Installation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition">Maintenance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition">Upgrades</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition">Training</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-purple-400">RESOURCES</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Developers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Research</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-red-400">COMPANY</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-red-400 transition">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-red-400 transition">Careers</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-red-400 transition">Privacy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-red-400 transition">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-12 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2077 NEXUS CYBERNETICS. ALL RIGHTS RESERVED.</p>
+                <div class="flex space-x-6">
+                    <a href="privacy.html" class="text-gray-400 hover:text-cyan-400 transition">PRIVACY</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-cyan-400 transition">TERMS</a>
+                    <a href="cookies.html" class="text-gray-400 hover:text-cyan-400 transition">COOKIES</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialize animations when page loads
+        window.addEventListener('load', animateOnScroll);
+        
+        // Animate on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Create floating particles
+        const createParticles = () => {
+            const container = document.body;
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random properties
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 10 + 10;
+                const opacity = Math.random() * 0.4 + 0.1;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.opacity = opacity;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                // Random color
+                const colors = ['#00fffc', '#00ff99', '#9900ff'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                
+                container.appendChild(particle);
+            }
+        };
+        
+        // Create particles on load
+        window.addEventListener('load', createParticles);
+        
+        // Terminal typing effect
+        const terminalTyping = () => {
+            const terminal = document.querySelector('.terminal-content');
+            if (!terminal) return;
+            
+            const commands = [
+                "data --cookies --status",
+                "scan --neural --preferences",
+                "analyze --tracking --consent",
+                "purge --nonessential --confirm",
+                "encrypt --all --security 256"
+            ];
+            
+            let currentCommand = 0;
+            let currentChar = 0;
+            let isDeleting = false;
+            let isWaiting = false;
+            
+            const type = () => {
+                const commandLine = terminal.querySelector('.command-line');
+                if (!commandLine) return;
+                
+                if (isWaiting) {
+                    setTimeout(() => {
+                        isWaiting = false;
+                        type();
+                    }, 2000);
+                    return;
+                }
+                
+                if (isDeleting) {
+                    commandLine.textContent = commands[currentCommand].substring(0, currentChar - 1) + '_';
+                    currentChar--;
+                    
+                    if (currentChar === 0) {
+                        isDeleting = false;
+                        currentCommand = (currentCommand + 1) % commands.length;
+                        setTimeout(type, 500);
+                        return;
+                    }
+                } else {
+                    commandLine.textContent = commands[currentCommand].substring(0, currentChar + 1) + '_';
+                    currentChar++;
+                    
+                    if (currentChar === commands[currentCommand].length) {
+                        isWaiting = true;
+                        commandLine.textContent = commands[currentCommand] + '_';
+                        setTimeout(() => {
+                            const output = document.createElement('div');
+                            output.className = 'command-output';
+                            output.innerHTML = `
+                                <div>> COMMAND EXECUTED</div>
+                                <div>> STATUS: <span class="text-green-400">SECURE</span></div>
+                            `;
+                            terminal.insertBefore(output, commandLine.nextSibling);
+                            setTimeout(() => {
+                                isDeleting = true;
+                                type();
+                            }, 1500);
+                        }, 1000);
+                        return;
+                    }
+                }
+                
+                setTimeout(type, isDeleting ? 50 : 100);
+            };
+            
+            setTimeout(type, 2000);
+        };
+        
+        // Initialize terminal typing
+        window.addEventListener('load', terminalTyping);
+        
+        // Cookie banner functionality
+        const cookieBanner = document.getElementById('cookieBanner');
+        const cookieAccept = document.getElementById('cookieAccept');
+        const cookieSettings = document.getElementById('cookieSettings');
+        
+        // Show cookie banner if consent not given
+        if (!localStorage.getItem('nexusCookiesAccepted')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 2000);
+        }
+        
+        // Accept all cookies
+        cookieAccept.addEventListener('click', () => {
+            localStorage.setItem('nexusCookiesAccepted', 'true');
+            cookieBanner.classList.remove('show');
+            // In a real implementation, you would set all cookies here
+        });
+        
+        // Open settings
+        cookieSettings.addEventListener('click', () => {
+            alert('In a full implementation, this would open a detailed cookie preference center');
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.lg\\:hidden');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                // This would toggle a mobile menu
+                alert('MOBILE MENU WOULD OPEN HERE IN A FULL IMPLEMENTATION');
+            });
+        }
+    </script>
+</body>
+</html>
